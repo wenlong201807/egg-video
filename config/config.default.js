@@ -24,7 +24,8 @@ module.exports = (appInfo) => {
   };
 
   // 改成你自己的！！！
-  config.webUrl = 'ceshi8.dishait.cn';
+  config.webUrl = 'localhost:7001';
+  // config.webUrl = 'ceshi8.dishait.cn';
 
   config.auth = {
     match: [
