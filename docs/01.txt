@@ -1,0 +1,20 @@
+文档 https://dishaxy.com/doc/7/2.%E5%85%A8%E5%B1%80%E7%9B%B8%E5%85%B3/4.%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB%E9%85%8D%E7%BD%AE.html
+
+# 将数据库表 迁移进入数据库中
+npx sequelize db:migrate
+
+难点: 
+User.associate = function (models) {
+  // 关联用户资料 一对一
+  User.hasOne(app.model.Userinfo);
+  // 反向一对一关联
+  // Userinfo.belongsTo(app.model.User);
+  // 一对多关联
+  User.hasMany(app.model.Post);
+  // 反向一对多关联
+  // Post.belongsTo(app.model.User);
+  // 多对多
+  // User.belongsToMany(Project, { as: 'Tasks', through: 'worker_tasks', foreignKey: 'userId' })
+  // 反向多对多
+  // Project.belongsToMany(User, { as: 'Workers', through: 'worker_tasks', foreignKey: 'projectId' })
+};
