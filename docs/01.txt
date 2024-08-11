@@ -1,9 +1,12 @@
 文档 https://dishaxy.com/doc/7/2.%E5%85%A8%E5%B1%80%E7%9B%B8%E5%85%B3/4.%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB%E9%85%8D%E7%BD%AE.html
 
+# 创建数据迁移表
+npx sequelize migration:generate --name=category
+
 # 将数据库表 迁移进入数据库中
 npx sequelize db:migrate
 
-难点: 
+难点:
 User.associate = function (models) {
   // 关联用户资料 一对一
   User.hasOne(app.model.Userinfo);
