@@ -7,4 +7,5 @@ module.exports = {
   semi: false,
   jsxBracketSameLine: true,
   bracketSameLine: true,
-};
+  commaDangle: 'never',
+}
