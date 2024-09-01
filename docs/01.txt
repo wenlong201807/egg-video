@@ -22,3 +22,4 @@ User.associate = function (models) {
   // 反向多对多
   // Project.belongsToMany(User, { as: 'Workers', through: 'worker_tasks', foreignKey: 'projectId' })
 };
+// 表关联关系 详细说明 https://juejin.cn/post/6992509371129266184
