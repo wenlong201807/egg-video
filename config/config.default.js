@@ -162,12 +162,12 @@ module.exports = (appInfo) => {
   }
 
   // log
-  config.logger = {
-    // 日志分为 NONE，DEBUG，INFO，WARN 和 ERROR 5 个级别。
-    // 默认只会输出 INFO 及以上（WARN 和 ERROR）的日志到文件中。
-    level: 'INFO',
-    dir: path.join(appInfo.baseDir, 'logs'),
-  }
+  // config.logger = {
+  //   // 日志分为 NONE，DEBUG，INFO，WARN 和 ERROR 5 个级别。
+  //   // 默认只会输出 INFO 及以上（WARN 和 ERROR）的日志到文件中。
+  //   level: 'INFO',
+  //   dir: path.join(appInfo.baseDir, 'logs'),
+  // }
 
   // 腾讯云vod
   config.tencentVod = {

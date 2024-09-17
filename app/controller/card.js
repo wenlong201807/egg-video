@@ -1,12 +1,24 @@
-'use strict';
+'use strict'
 
-const Controller = require('egg').Controller;
+const Controller = require('egg').Controller
 
 class CardController extends Controller {
+  oldVersion() {
+    const { ctx, app } = this
+    const { version, time, page } = ctx.request.body
+    ctx.apiSuccess({ version, time, page })
+    // ctx.apiSuccess({ time: new Date(new Date().getTime() + 60000 * 1), version: '20240808', page: 'sing' })
+  }
+  heart() {
+    const { ctx, app } = this
+    // ctx.cookies.set('user', 'admin', { expires: new Date(new Date().getTime() + 60000 * 1) })
+    ctx.set('custom', 'CustomValue--' + new Date(new Date().getTime() + 60000 * 1))
+    ctx.apiSuccess({ version: '123', time: new Date().toLocaleDateString() })
+  }
   // 获取卡片列表
   async list() {
-    const { ctx, app } = this;
-    console.log('CardController:', ctx.query, ctx.params);
+    const { ctx, app } = this
+    console.log('CardController:', ctx.query, ctx.params)
 
     // ctx.validate({
     //   page: {
@@ -16,16 +28,16 @@ class CardController extends Controller {
     //   },
     // });
 
-    let rows = await ctx.page(app.model.Card);
+    let rows = await ctx.page(app.model.Card)
     // let rows = await app.model.CardList.findAll();
 
-    ctx.apiSuccess(rows);
+    ctx.apiSuccess(rows)
   }
 
   // 查看卡片详情
   // 视频详情
   async read() {
-    const { ctx, app, service } = this;
+    const { ctx, app, service } = this
     // let currentUser = ctx.authUser;
 
     ctx.validate({
@@ -34,9 +46,9 @@ class CardController extends Controller {
         required: true,
         desc: '作品ID',
       },
-    });
+    })
 
-    let { id } = ctx.params;
+    let { id } = ctx.params
 
     let cardDetail = await app.model.CardDetail.findOne({
       where: {
@@ -51,7 +63,7 @@ class CardController extends Controller {
         //   attributes: ['id', 'username', 'nickname', 'avatar']
         //   }
       ],
-    });
+    })
 
     // 5条热门视频
     // let hot = await this.hot();
@@ -78,8 +90,8 @@ class CardController extends Controller {
       // hot,
       // fava,
       // follow
-    });
+    })
   }
 }
 
-module.exports = CardController;
+module.exports = CardController

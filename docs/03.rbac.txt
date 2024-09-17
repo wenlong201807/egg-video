@@ -1,0 +1,55 @@
+在基于 Egg.js 和 MySQL 使用 Sequelize ORM 实现 
+RBAC（基于角色的访问控制，Role-Based Access Control）权限模型时，
+通常会涉及到三个核心部分：用户（User）、角色（Role）、权限（Permission）。
+通过角色管理权限，然后将角色分配给用户，用户因此可以拥有对应角色的权限。
+
+
+RBAC 权限模型设计
+1. 用户表（User）：存储用户的基本信息。
+2. 角色表（Role）：存储系统中的角色信息。
+3. 权限表（Permission）：存储系统的操作权限。
+4. 用户角色关联表（UserRole）：用于记录用户和角色之间的多对多关系。
+5. 角色权限关联表（RolePermission）：用于记录角色和权限之间的多对多关系。
+
+
+表结构设计
+一、用户表（users）：
+id: 主键，用户 ID
+username: 用户名
+password: 密码
+email: 邮箱
+
+二、角色表（roles）：
+id: 主键，角色 ID
+name: 角色名称
+
+三、权限表（permissions）：
+id: 主键，权限 ID
+name: 权限名称
+action: 对应的具体操作，如 read, write, delete
+
+四、用户角色关联表（user_roles）：
+user_id: 外键，关联用户表
+role_id: 外键，关联角色表
+
+五、角色权限关联表（role_permissions）：
+role_id: 外键，关联角色表
+permission_id: 外键，关联权限表
+
+创建模型 使用 Sequelize CLI 创建模型和迁移文件：
+npx sequelize migration:generate --name=role
+npx sequelize migration:generate --name=permission
+npx sequelize migration:generate --name=user_role
+npx sequelize migration:generate --name=role_permission
+
+npx sequelize db:migrate
+
+$ npx sequelize-cli model:generate --name User --attributes username:string,password:string,email:string
+$ npx sequelize-cli model:generate --name Role --attributes name:string
+$ npx sequelize-cli model:generate --name Permission --attributes name:string,action:string
+$ npx sequelize-cli model:generate --name UserRole --attributes userId:integer,roleId:integer
+$ npx sequelize-cli model:generate --name RolePermission --attributes roleId:integer,permissionId:integer
+
+
+case:
+https://github.com/Imfdj/egg-beehive

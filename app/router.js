@@ -14,6 +14,8 @@ module.exports = (app) => {
   router.get('/category', controller.category.index)
 
   // 卡片制作流程
+  router.post('/api/oldVersion', controller.card.oldVersion)
+  router.get('/api/heart', controller.card.heart)
   router.get('/cardList', controller.card.list)
   // 某一张卡片 的详情
   router.get('/card_detail/:id', controller.card.read)

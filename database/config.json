@@ -4,8 +4,7 @@
     "password": "157351",
     "database": "egg-video",
     "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",
